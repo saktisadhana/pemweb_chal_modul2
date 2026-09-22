@@ -1,0 +1,390 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --navy: #233f7c;
+    --glass: rgba(0, 0, 0, 0.2);
+    --chip: rgba(255, 255, 255, 0.5);
+    --white: #ffffff;
+    --radius: 20px;
+}
+
+html,
+body {
+    min-height: 100%;
+    background: transparent;
+    font-family: "Google Sans", "Segoe UI", system-ui, sans-serif;
+    color: var(--navy);
+}
+
+.bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: #fff;
+}
+
+.bg-art {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1440px;
+    height: 1158px;
+    transform: translate(-50%, -50%) scale(max(calc(100vw / 1440px), calc(100vh / 1158px)));
+}
+
+.bg-noise {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    opacity: 0.17;
+}
+
+.bg-noise img {
+    position: absolute;
+    left: 0;
+    top: -23.99%;
+    width: 100%;
+    height: 147.98%;
+    max-width: none;
+}
+
+.bg-wash {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(105, 110, 157, 0) 0%,
+        rgba(105, 110, 157, 0.029) 4.5707%,
+        rgba(105, 110, 157, 0.052) 10.543%,
+        rgba(105, 110, 157, 0.059) 13.317%,
+        rgba(105, 110, 157, 0.557) 63.763%,
+        rgb(105, 110, 157) 100%
+    );
+}
+
+.bg-blob {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-blob img {
+    display: block;
+    width: 1158px;
+    height: 1440px;
+    max-width: none;
+    flex: none;
+}
+
+.bg-rect-14 img {
+    transform: rotate(90deg) scaleY(-1);
+}
+
+.bg-rect-31 img {
+    transform: rotate(-90deg);
+}
+
+.bg-rect-30 img {
+    transform: rotate(90deg);
+}
+
+.bg-rect-32 img {
+    transform: rotate(-90deg) scaleY(-1);
+}
+
+.bg-rect-33 img {
+    transform: rotate(-90deg);
+}
+
+.page {
+    position: relative;
+    z-index: 1;
+    width: 1440px;
+    max-width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 22px;
+    padding: 117px 90px 80px;
+}
+
+.title,
+.composer,
+.list-panel {
+    grid-column: 1 / -1;
+}
+
+.title {
+    margin: 0 0 85px 11px;
+    color: var(--white);
+    font-family: "Momo Trust Display", system-ui, sans-serif;
+    font-size: 92px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.panel {
+    width: 100%;
+    max-width: 100%;
+    background: var(--glass);
+    border: 2px solid var(--white);
+    border-radius: var(--radius);
+}
+
+.composer {
+    height: 348px;
+    padding: 62px 44px 56px 43px;
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}
+
+.search-form {
+    position: relative;
+    width: 1173px;
+    max-width: 100%;
+    height: 111px;
+}
+
+.search-form input {
+    width: 100%;
+    height: 111px;
+    padding: 0 80px 0 58px;
+    border: 2px solid var(--white);
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--navy);
+    font-family: "Google Sans", "Segoe UI", system-ui, sans-serif;
+    font-size: 31px;
+    font-weight: 400;
+    line-height: 1.2;
+    outline: none;
+}
+
+.search-form input:focus-visible {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.45);
+}
+
+.search-btn {
+    position: absolute;
+    top: 50%;
+    right: 63px;
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    background: none;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.search-btn svg {
+    display: block;
+}
+
+.filters {
+    display: flex;
+    gap: 50px;
+}
+
+.chip,
+.delete-btn,
+.task-name {
+    font-family: "Google Sans", "Segoe UI", system-ui, sans-serif;
+    font-size: 31px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--navy);
+}
+
+.chip,
+.delete-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 74px;
+    border: 2px solid var(--white);
+    border-radius: var(--radius);
+    background: var(--chip);
+    cursor: pointer;
+}
+
+.chip {
+    width: 206px;
+    padding: 0 16px;
+}
+
+.chip:hover,
+.delete-btn:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.chip:active,
+.delete-btn:active,
+.search-btn:active {
+    opacity: 0.92;
+}
+
+.search-btn:hover {
+    opacity: 0.8;
+}
+
+.chip:focus-visible,
+.delete-btn:focus-visible,
+.search-btn:focus-visible {
+    outline: 3px solid var(--white);
+    outline-offset: 2px;
+}
+
+.list-panel {
+    min-height: 555px;
+    margin-top: 45px;
+    padding: 41px 38px 40px 43px;
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 58px;
+    list-style: none;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    gap: 90px;
+}
+
+.task.is-completed .task-name {
+    text-decoration: line-through;
+    opacity: 0.55;
+}
+
+.task-name {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    height: 74px;
+    padding: 18px 59px 19px 58px;
+    border: 2px solid var(--white);
+    border-radius: var(--radius);
+    background: var(--chip);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.delete-btn {
+    flex: 0 0 170px;
+    width: 170px;
+    padding: 0 16px;
+}
+
+@media (max-width: 1400px) {
+    .page {
+        width: 100%;
+        padding: 72px 24px 48px;
+    }
+
+    .title {
+        margin-left: 0;
+        font-size: 64px;
+    }
+
+    .panel,
+    .search-form {
+        width: 100%;
+    }
+
+    .composer {
+        height: auto;
+        padding: 32px 24px;
+        gap: 24px;
+    }
+
+    .search-form,
+    .search-form input {
+        height: 72px;
+    }
+
+    .search-form input {
+        font-size: 22px;
+        padding-left: 24px;
+    }
+
+    .search-btn {
+        right: 20px;
+    }
+
+    .filters {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .chip,
+    .delete-btn,
+    .task-name {
+        font-size: 22px;
+        height: 56px;
+    }
+
+    .chip {
+        width: auto;
+        min-width: 120px;
+        padding: 8px 28px;
+    }
+
+    .list-panel {
+        min-height: 0;
+        margin-top: 24px;
+        padding: 24px;
+    }
+
+    .todo-list {
+        gap: 16px;
+    }
+
+    .task {
+        gap: 12px;
+    }
+
+    .task-name {
+        padding: 8px 20px;
+    }
+
+    .delete-btn {
+        flex-basis: 110px;
+        width: 110px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 48px;
+        margin-bottom: 32px;
+    }
+
+    .task {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .delete-btn {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+}
